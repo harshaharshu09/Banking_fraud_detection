@@ -111,6 +111,7 @@ Random Forest is also used to generate fraud probabilities for risk analysis.
                               ▼
                     ⚠️ BUSINESS ACTION
 
+
 ## 📊 Data Analysis
 
 The project performs Exploratory Data Analysis to understand transaction behavior and identify patterns related to fraudulent transactions.

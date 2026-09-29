@@ -1,0 +1,2 @@
+transaction_id,amount,transaction_type,location,device,fraud_prediction,fraud_probability,risk_score,risk_level
+TX209,78000,Transfer,Delhi,New,FRAUD,1.0,100.0,HIGH

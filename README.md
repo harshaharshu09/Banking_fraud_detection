@@ -29,6 +29,21 @@ The system processes transaction data, analyzes suspicious patterns, applies Mac
 The project demonstrates how transaction-level data can be transformed into meaningful fraud detection and risk analytics insights.
 
 ---
+---
+
+## ✨ Project Highlights
+
+| Capability | Description |
+|------------|-------------|
+| 🔍 Fraud Detection | Identifies potentially fraudulent banking transactions |
+| 📊 Risk Analytics | Generates fraud probability and transaction risk scores |
+| 🤖 Machine Learning | Uses classification models for fraud prediction |
+| 📈 Data Visualization | Provides analytical plots for transaction and fraud patterns |
+| 🎯 Risk Classification | Categorizes transactions into LOW, MEDIUM, and HIGH risk |
+| 📁 Automated Outputs | Stores model metrics, predictions, risk scores, and visualizations |
+| 💼 Business Insights | Supports further verification and investigation decisions |
+
+---
 
 ## 🎯 Objectives
 

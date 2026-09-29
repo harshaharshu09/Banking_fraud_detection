@@ -110,10 +110,10 @@ Random Forest is also used to generate fraud probabilities for risk analysis.
                               │
                               ▼
                     ⚠️ BUSINESS ACTION
-📊 Data Analysis
+
+## 📊 Data Analysis
 
 The project performs Exploratory Data Analysis to understand transaction behavior and identify patterns related to fraudulent transactions.
-
 Analysis includes:
 Fraud vs Genuine distribution
 Transaction amount analysis
@@ -123,10 +123,10 @@ Device-based fraud analysis
 Correlation analysis
 Risk distribution
 Risk score distribution
-
 These visualizations help understand how transaction characteristics relate to fraud.
 
-🛠️ Technology Stack
+## 🛠️ Technology Stack
+
 | Category         | Technologies       |
 | ---------------- | ------------------ |
 | Programming      | Python             |
@@ -138,7 +138,8 @@ These visualizations help understand how transaction characteristics relate to f
 | Development      | Visual Studio Code |
 
 
-📈 Model Evaluation
+## 📈 Model Evaluation
+
 The Machine Learning models are evaluated using standard classification metrics.
 | Metric           | Purpose                                                                 |
 | ---------------- | ----------------------------------------------------------------------- |
@@ -149,9 +150,9 @@ The Machine Learning models are evaluated using standard classification metrics.
 | Confusion Matrix | Shows correct and incorrect classifications                             |
 | ROC-AUC          | Measures the model's ability to separate fraud and genuine transactions |
 
-🎯 Fraud Risk Analytics
-The system converts the predicted fraud probability into a risk score.
+## 🎯 Fraud Risk Analytics
 
+The system converts the predicted fraud probability into a risk score.
 Risk Score
 Risk Score = Fraud Probability × 100
 Example
@@ -167,9 +168,9 @@ Risk Score	Risk Level
 
 Risk thresholds are configurable and are used as an analytical example in this project.
 
-🔎 Transaction Prediction
-The project also demonstrates prediction on a new transaction.
+## 🔎 Transaction Prediction
 
+The project also demonstrates prediction on a new transaction.
 Example:
 Transaction
      │
@@ -199,7 +200,7 @@ Further verification / investigation required
 
 The prediction acts as a risk signal for further analysis. It does not automatically represent a banking decision or transaction block.
 
-📁 Project Structure
+## 📁 Project Structure
 
 Banking_fraud_project/
 │
@@ -224,10 +225,11 @@ Banking_fraud_project/
 ├── 📄 .gitignore
 └── 📖 README.md
 
-📊 Project Outputs
+## 📊 Project Outputs
+
 The project automatically generates analytical outputs including:
 
-📈 Visualizations
+## 📈 Visualizations
 
 Fraud Distribution
 Transaction Amount Distribution
@@ -241,14 +243,15 @@ ROC Curve
 Risk Distribution
 Risk Score Distribution
 
-📄 Result Files
+## 📄 Result Files
+
 model_metrics.csv
 new_transaction_result.csv
 transaction_risk_scores.csv
-
 These outputs provide both visual and tabular insights into model performance and transaction risk.
 
-⚙️ Installation & Setup
+## ⚙️ Installation & Setup
+
 1️⃣ Clone the Repository
 git clone https://github.com/YOUR_USERNAME/banking-fraud-detection.git
 2️⃣ Navigate to the Project
@@ -258,21 +261,19 @@ pip install -r requirements.txt
 4️⃣ Run the Project
 python fraud_detection.py
 
-📦 Requirements
-The project uses the following Python libraries:
+## 📦 Requirements
 
+The project uses the following Python libraries:
 pandas
 numpy
 matplotlib
 scikit-learn
-
 Install all dependencies using:
-
 pip install -r requirements.txt
 
-🧪 Sample Project Flow
-A transaction enters the system.
+## 🧪 Sample Project Flow
 
+A transaction enters the system.
 Transaction Amount
         +
 Transaction Type
@@ -302,9 +303,9 @@ Risk Level
         ▼
 Further Verification / Investigation
 
-💡 Key Learning Outcomes
-Through this project, the following concepts were implemented:
+## 💡 Key Learning Outcomes
 
+Through this project, the following concepts were implemented:
 Python-based data analysis
 Pandas data processing
 Data cleaning
@@ -324,11 +325,10 @@ Risk classification
 Data visualization
 Git and GitHub project management
 
-⚠️ Project Limitations
+## ⚠️ Project Limitations
+
 This project is designed as a Machine Learning and risk analytics demonstration.
-
 Real-world banking fraud detection systems may require:
-
 Much larger transaction datasets
 Real-time transaction processing
 Advanced anomaly detection
@@ -338,12 +338,11 @@ Device intelligence
 Network and graph analysis
 Continuous model monitoring
 Strong security and compliance controls
-
 Therefore, the results of this project should be interpreted as an analytical demonstration rather than a production banking fraud prevention system.
 
-🔮 Future Enhancements
-Possible future improvements include:
+## 🔮 Future Enhancements
 
+Possible future improvements include:
 🌐 Real-time fraud detection
 🤖 Advanced anomaly detection
 🧠 Deep Learning based fraud detection
@@ -355,7 +354,8 @@ Possible future improvements include:
 📈 Model monitoring and retraining
 🚨 Automated fraud alerts
 
-🏗️ End-to-End Architecture
+## 🏗️ End-to-End Architecture
+
 
                     USER TRANSACTION
                            │
@@ -391,17 +391,19 @@ Possible future improvements include:
                            ▼
                  BUSINESS INSIGHT
 
-📸 Project Visualizations
+
+## 📸 Project Visualizations
+
 The repository contains generated visualizations inside:
-
 outputs/plots/
-
 These plots provide visual insights into transaction behavior, fraud distribution, model performance, and risk analysis.
 
-🔐 Responsible Use
+## 🔐 Responsible Use
+
 This project is intended for educational, analytical, and demonstration purposes.
 Fraud predictions should be treated as risk indicators and should be combined with appropriate verification procedures, business rules, and human review before taking consequential actions.
 
-👨‍💻 Project
+## 👨‍💻 Project
+
 Banking Fraud Detection & Risk Analytics
 Machine Learning | Data Analytics | Fraud Detection | Risk Analysis

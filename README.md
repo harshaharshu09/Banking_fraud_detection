@@ -205,6 +205,7 @@ The prediction acts as a risk signal for further analysis. It does not automatic
 
 ## 📁 Project Structure
 
+```
 Banking_fraud_project/
 │
 ├── 📂 outputs/
@@ -227,6 +228,8 @@ Banking_fraud_project/
 ├── 📄 requirements.txt
 ├── 📄 .gitignore
 └── 📖 README.md
+
+```
 
 ## 📊 Project Outputs
 

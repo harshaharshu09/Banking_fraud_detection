@@ -173,6 +173,44 @@ Risk Score	Risk Level
 
 Risk thresholds are configurable and are used as an analytical example in this project.
 
+---
+
+## 📊 Visual Analytics
+
+The project generates multiple visualizations to analyze transaction behavior, fraud patterns, model performance, and risk distribution.
+
+### 🔎 Fraud & Transaction Analysis
+
+| Fraud Distribution | Transaction Amount |
+|--------------------|--------------------|
+| ![Fraud Distribution](outputs/plots/fraud_distribution.png) | ![Transaction Amount](outputs/plots/transaction_amount_distribution.png) |
+
+### 💳 Transaction Pattern Analysis
+
+| Transaction Type | Location Analysis |
+|------------------|-------------------|
+| ![Transaction Type](outputs/plots/transaction_type_fraud.png) | ![Location Fraud](outputs/plots/location_fraud.png) |
+
+### 🖥️ Device & Correlation Analysis
+
+| Device Fraud Analysis | Correlation Heatmap |
+|-----------------------|---------------------|
+| ![Device Fraud](outputs/plots/device_fraud.png) | ![Correlation Heatmap](outputs/plots/correlation_heatmap.png) |
+
+### 🤖 Model Performance
+
+| Confusion Matrix | ROC Curve |
+|------------------|-----------|
+| ![Confusion Matrix](outputs/plots/confusion_matrix.png) | ![ROC Curve](outputs/plots/roc_curve.png) |
+
+### 🎯 Risk Analytics
+
+| Risk Distribution | Risk Score Distribution |
+|--------------------|-------------------------|
+| ![Risk Distribution](outputs/plots/risk_distribution.png) | ![Risk Score Distribution](outputs/plots/risk_score_distribution.png) |
+
+---
+
 ## 🔎 Transaction Prediction
 
 The project also demonstrates prediction on a new transaction.

@@ -211,6 +211,28 @@ The project generates multiple visualizations to analyze transaction behavior, f
 
 ---
 
+## 🤖 Model Performance
+
+Two classification models were implemented and evaluated for fraud detection:
+
+| Model | Accuracy | Precision | Recall | F1 Score |
+|-------|----------|-----------|--------|----------|
+| Logistic Regression | 100% | 100% | 100% | 100% |
+| Random Forest | 100% | 100% | 100% | 100% |
+
+### 📌 Evaluation Metrics
+
+- **Accuracy** — Measures the overall percentage of correct predictions.
+- **Precision** — Measures how many transactions predicted as fraud were actually fraudulent.
+- **Recall** — Measures how many actual fraudulent transactions were successfully detected.
+- **F1 Score** — Provides a balance between Precision and Recall.
+- **Confusion Matrix** — Shows correct and incorrect classification results.
+- **ROC-AUC** — Measures the model's ability to distinguish between fraud and genuine transactions.
+
+> **Note:** The reported 100% test metrics are based on the project's current sample/test dataset. Performance on larger, unseen, real-world datasets may differ.
+
+---
+
 ## 🔎 Transaction Prediction
 
 The project also demonstrates prediction on a new transaction.

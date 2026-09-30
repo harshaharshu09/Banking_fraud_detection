@@ -1,477 +1,374 @@
-# 🏦 Banking Fraud Detection & Risk Analytics
+# Banking Fraud Detection and Risk Analytics
 
-<p align="center">
+Machine learning project for classifying banking transactions as genuine or potentially fraudulent and assigning a transaction-level risk score.
 
-<img src="https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python" />
-<img src="https://img.shields.io/badge/Machine%20Learning-Scikit--learn-orange?style=for-the-badge&logo=scikit-learn" />
-<img src="https://img.shields.io/badge/Data%20Analysis-Pandas-purple?style=for-the-badge&logo=pandas" />
-<img src="https://img.shields.io/badge/Visualization-Matplotlib-green?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Git-GitHub-black?style=for-the-badge&logo=github" />
+## Project Summary
 
-</p>
+This repository contains the implementation of a banking transaction fraud detection workflow using Python and scikit-learn.
 
----
+The workflow starts with transaction data and covers:
 
-## 🚀 Project Overview
+- Data inspection and cleaning
+- Exploratory analysis
+- Feature preparation
+- Categorical encoding
+- Train/test splitting
+- Classification model training
+- Model evaluation
+- Fraud probability estimation
+- Risk score calculation
+- Risk category assignment
 
-**Banking Fraud Detection & Risk Analytics** is a Machine Learning based project designed to analyze banking transactions and identify potentially fraudulent activities.
+Two classification models are implemented:
 
-The system processes transaction data, analyzes suspicious patterns, applies Machine Learning classification models, and generates:
+- Logistic Regression
+- Random Forest
 
-- 🔍 Fraud / Genuine prediction
-- 📊 Fraud probability
-- 🎯 Risk score
-- 🚦 Risk level
-- 📈 Data visualizations
-- 🧠 Model performance metrics
-- ⚠️ Business action recommendations
+The final prediction is converted into a fraud probability, a score between 0 and 100, and a corresponding risk category.
 
-The project demonstrates how transaction-level data can be transformed into meaningful fraud detection and risk analytics insights.
+## Problem
 
+A banking transaction can differ from a customer's usual activity in several ways, including transaction amount, transaction type, device, location, or transaction timing.
 
+The purpose of this project is to use available transaction attributes to classify transactions and identify records that may require additional review.
 
----
-
-## 🎯 Objectives
-
-The major objectives of this project are:
-
-- Detect potentially fraudulent banking transactions
-- Analyze transaction behavior and patterns
-- Perform data cleaning and preprocessing
-- Explore fraud-related patterns using EDA
-- Prepare features for Machine Learning
-- Compare multiple Machine Learning models
-- Evaluate model performance
-- Calculate fraud probability
-- Generate transaction risk scores
-- Classify transactions into **LOW, MEDIUM, and HIGH** risk
-- Generate visual analytics for fraud investigation
-
----
-
-## 🧠 Machine Learning Models
-
-The project implements and compares two classification algorithms:
-
-### 1️⃣ Logistic Regression
-
-Used as a baseline classification model to predict whether a transaction is:
-
-- `0 → Genuine`
-- `1 → Fraud`
-
-### 2️⃣ Random Forest
-
-A tree-based ensemble Machine Learning algorithm that combines multiple decision trees to improve classification performance.
-
-Random Forest is also used to generate fraud probabilities for risk analysis.
-
----
-
-# 🔄 Project Workflow
+The target variable is `fraud`:
 
 ```text
-                    🏦 BANKING TRANSACTION DATA
-                              │
-                              ▼
-                    📋 DATA UNDERSTANDING
-                              │
-                              ▼
-                       🧹 DATA CLEANING
-                              │
-                              ▼
-                    📊 EXPLORATORY DATA ANALYSIS
-                              │
-                              ▼
-                     ⚙️ FEATURE ENGINEERING
-                              │
-                              ▼
-                       🔢 DATA ENCODING
-                              │
-                              ▼
-                      ✂️ TRAIN / TEST SPLIT
-                              │
-                              ▼
-                    🤖 MACHINE LEARNING
-                       ┌──────┴──────┐
-                       ▼             ▼
-               Logistic Regression  Random Forest
-                       └──────┬──────┘
-                              ▼
-                     📈 MODEL EVALUATION
-                              │
-                              ▼
-                    🎯 FRAUD PROBABILITY
-                              │
-                              ▼
-                       📊 RISK SCORE
-                              │
-                              ▼
-                   🚦 RISK LEVEL ANALYSIS
-                              │
-                              ▼
-                    ⚠️ BUSINESS ACTION
+0 = Genuine transaction
+1 = Fraudulent transaction
 
-```                                       
+```
 
-        
-## 📊 Data Analysis
+## Dataset
 
-The project performs Exploratory Data Analysis to understand transaction behavior and identify patterns related to fraudulent transactions.
-Analysis includes:
-Fraud vs Genuine distribution
-Transaction amount analysis
-Transaction type analysis
-Location-based fraud analysis
-Device-based fraud analysis
-Correlation analysis
+The dataset contains transaction-level banking information.
+
+| Column             | Description                             |
+| ------------------ | --------------------------------------- |
+| `transaction_id`   | Unique identifier for the transaction   |
+| `customer_id`      | Identifier associated with the customer |
+| `amount`           | Transaction amount                      |
+| `transaction_type` | Type of transaction                     |
+| `timestamp`        | Transaction date and time               |
+| `device`           | Device used for the transaction         |
+| `location`         | Transaction location                    |
+| `fraud`            | Binary target variable                  |
+
+## Workflow
+
+Raw Transaction Data
+        |
+        v
+Data Inspection
+        |
+        v
+Data Cleaning
+        |
+        v
+Exploratory Analysis
+        |
+        v
+Feature Preparation
+        |
+        v
+Categorical Encoding
+        |
+        v
+Train / Test Split
+        |
+        v
+Model Training
+        |
+        +----------------------+
+        |                      |
+        v                      v
+Logistic Regression      Random Forest
+        |                      |
+        +----------+-----------+
+                   |
+                   v
+            Model Evaluation
+                   |
+                   v
+           Fraud Probability
+                   |
+                   v
+              Risk Score
+                   |
+                   v
+            Risk Category
+
+            
+            
+ ## Data Preparation
+
+The dataset is first inspected to understand its structure, data types, dimensions, and data quality.
+
+The preparation process includes:
+
+Loading the CSV file using Pandas.
+Inspecting the available columns and records.
+Checking missing values.
+Checking duplicate records.
+Reviewing transaction values.
+Separating features from the target variable.
+Encoding categorical variables.
+
+The categorical fields used by the model are converted into numerical features using one-hot encoding.
+
+The resulting dataset is divided into training and testing data using an 80:20 split with stratification on the fraud target.
+
+## Exploratory Analysis
+
+Exploratory analysis is used to examine the distribution of transactions and identify patterns within the available data.
+
+The implementation generates visualizations for:
+
+Fraud distribution
+Transaction amount distribution
+Transaction type
+Location
+Device
+Feature correlation
+Model confusion matrix
+ROC curve
 Risk distribution
 Risk score distribution
-These visualizations help understand how transaction characteristics relate to fraud.
+The generated charts are available in:
+outputs/plots/
 
-## 🛠️ Technology Stack
+## Models
+## Logistic Regression
+Logistic Regression is used as the baseline classification model.
 
-| Category         | Technologies       |
-| ---------------- | ------------------ |
-| Programming      | Python             |
-| Data Processing  | Pandas, NumPy      |
-| Machine Learning | Scikit-learn       |
-| Visualization    | Matplotlib         |
-| Version Control  | Git                |
-| Repository       | GitHub             |
-| Development      | Visual Studio Code |
+It estimates the probability of a transaction belonging to the fraudulent class and provides a reference model for comparison.
 
+## Random Forest
+Random Forest is used as the second classification model.
+It combines multiple decision trees and uses their combined predictions to classify the transaction.
 
-## 📈 Model Evaluation
+Configuration used in the implementation:
+n_estimators = 100
+random_state = 42
+class_weight = balanced
 
-The Machine Learning models are evaluated using standard classification metrics.
-| Metric           | Purpose                                                                 |
-| ---------------- | ----------------------------------------------------------------------- |
-| Accuracy         | Overall prediction correctness                                          |
-| Precision        | Correct fraud predictions among predicted fraud                         |
-| Recall           | Fraud cases correctly detected                                          |
-| F1-Score         | Balance between precision and recall                                    |
-| Confusion Matrix | Shows correct and incorrect classifications                             |
-| ROC-AUC          | Measures the model's ability to separate fraud and genuine transactions |
+class_weight="balanced" is used to account for the difference between the genuine and fraudulent transaction classes.
 
-## 🎯 Fraud Risk Analytics
+## Evaluation
+The models are evaluated using:
 
-The system converts the predicted fraud probability into a risk score.
-Risk Score
+| Metric           | What it measures                                                |
+| ---------------- | --------------------------------------------------------------- |
+| Accuracy         | Overall percentage of correct predictions                       |
+| Precision        | Correct fraud predictions among transactions predicted as fraud |
+| Recall           | Fraudulent transactions detected by the model                   |
+| F1 Score         | Combined measure of precision and recall                        |
+| Confusion Matrix | Correct and incorrect predictions by class                      |
+| ROC-AUC          | Separation between genuine and fraudulent classes               |
+
+## Results on the Current Test Split
+| Model               | Accuracy | Precision | Recall | F1 Score |
+| ------------------- | -------- | --------- | ------ | -------- |
+| Logistic Regression | 100%     | 100%      | 100%   | 100%     |
+| Random Forest       | 100%     | 100%      | 100%   | 100%     |
+
+The current test set is small, so these values should be interpreted only in the context of this dataset and split. They should not be treated as an estimate of performance on a larger production dataset.
+
+## Risk Scoring
+The Random Forest model is used to obtain the probability of the fraudulent class.
+
+The probability is converted into a 0–100 score:
 Risk Score = Fraud Probability × 100
-Example
+
+For example:
 Fraud Probability = 0.93
+Risk Score         = 93 / 100
+Risk Category      = HIGH
 
-Risk Score = 0.93 × 100
-           = 93 / 100
-Risk Classification
-Risk Score	Risk Level
-0 – 29	 🟢 LOW
-30 – 69	 🟡 MEDIUM
-70 – 100 🔴 HIGH
+The current thresholds are:
+| Score  | Category |
+| ------ | -------- |
+| 0–29   | LOW      |
+| 30–69  | MEDIUM   |
+| 70–100 | HIGH     |
 
-Risk thresholds are configurable and are used as an analytical example in this project.
+These thresholds are configurable and are used for the risk classification layer of the project.
+A HIGH result indicates that the transaction should receive additional attention. It is not, by itself, a decision to block the transaction.
 
----
+## New Transaction Prediction
+The implementation also evaluates a new transaction using the trained model.
 
-## 📊 Visual Analytics
-
-The project generates multiple visualizations to analyze transaction behavior, fraud patterns, model performance, and risk distribution.
-
-### 🔎 Fraud & Transaction Analysis
-
-| Fraud Distribution | Transaction Amount |
-|--------------------|--------------------|
-| ![Fraud Distribution](outputs/plots/fraud_distribution.png) | ![Transaction Amount](outputs/plots/transaction_amount_distribution.png) |
-
-### 💳 Transaction Pattern Analysis
-
-| Transaction Type | Location Analysis |
-|------------------|-------------------|
-| ![Transaction Type](outputs/plots/transaction_type_fraud.png) | ![Location Fraud](outputs/plots/location_fraud.png) |
-
-### 🖥️ Device & Correlation Analysis
-
-| Device Fraud Analysis | Correlation Heatmap |
-|-----------------------|---------------------|
-| ![Device Fraud](outputs/plots/device_fraud.png) | ![Correlation Heatmap](outputs/plots/correlation_heatmap.png) |
-
-### 🤖 Model Performance
-
-| Confusion Matrix | ROC Curve |
-|------------------|-----------|
-| ![Confusion Matrix](outputs/plots/confusion_matrix.png) | ![ROC Curve](outputs/plots/roc_curve.png) |
-
-### 🎯 Risk Analytics
-
-| Risk Distribution | Risk Score Distribution |
-|--------------------|-------------------------|
-| ![Risk Distribution](outputs/plots/risk_distribution.png) | ![Risk Score Distribution](outputs/plots/risk_score_distribution.png) |
-
----
-
-## 🤖 Model Performance
-
-Two classification models were implemented and evaluated for fraud detection:
-
-| Model | Accuracy | Precision | Recall | F1 Score |
-|-------|----------|-----------|--------|----------|
-| Logistic Regression | 100% | 100% | 100% | 100% |
-| Random Forest | 100% | 100% | 100% | 100% |
-
-### 📌 Evaluation Metrics
-
-- **Accuracy** — Measures the overall percentage of correct predictions.
-- **Precision** — Measures how many transactions predicted as fraud were actually fraudulent.
-- **Recall** — Measures how many actual fraudulent transactions were successfully detected.
-- **F1 Score** — Provides a balance between Precision and Recall.
-- **Confusion Matrix** — Shows correct and incorrect classification results.
-- **ROC-AUC** — Measures the model's ability to distinguish between fraud and genuine transactions.
-
-> **Note:** The reported 100% test metrics are based on the project's current sample/test dataset. Performance on larger, unseen, real-world datasets may differ.
-
----
-
-## 🔎 Transaction Prediction
-
-The project also demonstrates prediction on a new transaction.
-Example:
-Transaction
-     │
-     ▼
-Machine Learning Model
-     │
-     ▼
+The prediction process is:
+New Transaction
+       |
+       v
+Feature Preparation
+       |
+       v
+Model Prediction
+       |
+       v
 Fraud Probability
-     │
-     ▼
+       |
+       v
 Risk Score
-     │
-     ▼
-Risk Level
-     │
-     ▼
-Business Action
+       |
+       v
+Risk Category
 
-Example Output
-Result          : FRAUD
-Fraud Probability: High
-Risk Score       : 100 / 100
-Risk Level       : HIGH
+Example output:
 
-Business Action:
-Further verification / investigation required
+Prediction        : Fraud
+Fraud Probability : 0.93
+Risk Score        : 93 / 100
+Risk Category     : HIGH
+Action            : Further verification / investigation
 
-The prediction acts as a risk signal for further analysis. It does not automatically represent a banking decision or transaction block.
-
-## 📁 Project Structure
-
-```
-Banking_fraud_project/
-│
-├── 📂 outputs/
-│   │
-│   └── 📂 plots/
-│       ├── fraud_distribution.png
-│       ├── transaction_amount_distribution.png
-│       ├── transaction_amount_by_fraud.png
-│       ├── transaction_type_fraud.png
-│       ├── location_fraud.png
-│       ├── device_fraud.png
-│       ├── correlation_heatmap.png
-│       ├── confusion_matrix.png
-│       ├── roc_curve.png
-│       ├── risk_distribution.png
-│       └── risk_score_distribution.png
-│
-├── 📄 banking_fraud.csv
-├── 🐍 fraud_detection.py
-├── 📄 requirements.txt
-├── 📄 .gitignore
-└── 📖 README.md
-
-```
-
-## 📊 Project Outputs
-
-The project automatically generates analytical outputs including:
-
-## 📈 Visualizations
-
+## Analysis Results
 Fraud Distribution
 Transaction Amount Distribution
-Transaction Amount by Fraud
-Transaction Type Fraud Analysis
-Location Fraud Analysis
-Device Fraud Analysis
-Correlation Heatmap
+Transaction Type
+Location
+Device
+Feature Correlation
 Confusion Matrix
 ROC Curve
 Risk Distribution
 Risk Score Distribution
 
-## 📄 Result Files
+## Repository Structure
+Banking_fraud_detection/
+│
+├── banking_fraud.csv
+├── fraud_detection.py
+├── requirements.txt
+├── .gitignore
+├── README.md
+│
+└── outputs/
+    │
+    ├── model_metrics.csv
+    ├── new_transaction_result.csv
+    ├── transaction_risk_scores.csv
+    │
+    └── plots/
+        ├── fraud_distribution.png
+        ├── transaction_amount_distribution.png
+        ├── transaction_type_fraud.png
+        ├── location_fraud.png
+        ├── device_fraud.png
+        ├── correlation_heatmap.png
+        ├── confusion_matrix.png
+        ├── roc_curve.png
+        ├── risk_distribution.png
+        └── risk_score_distribution.png
 
+## Output Files
 model_metrics.csv
+
+Stores the evaluation results for the implemented classification models.
+
 new_transaction_result.csv
+
+Stores the prediction and risk information generated for the new transaction.
+
 transaction_risk_scores.csv
-These outputs provide both visual and tabular insights into model performance and transaction risk.
 
-## ⚙️ Installation & Setup
+Stores transaction-level fraud probabilities and risk scores.
 
-1️⃣ Clone the Repository
-git clone https://github.com/YOUR_USERNAME/banking-fraud-detection.git
-2️⃣ Navigate to the Project
-cd banking-fraud-detection
-3️⃣ Install Dependencies
+outputs/plots/
+
+Contains the visualizations generated during analysis and model evaluation.
+
+## Technology Stack
+| Area               | Technology    |
+| ------------------ | ------------- |
+| Language           | Python        |
+| Data Processing    | Pandas, NumPy |
+| Machine Learning   | Scikit-learn  |
+| Visualization      | Matplotlib    |
+| Version Control    | Git           |
+| Repository Hosting | GitHub        |
+
+## Project Setup
+Clone the repository:
+
+git clone https://github.com/harshaharshu09/Banking_fraud_detection.git
+
+Move into the project directory:
+
+cd Banking_fraud_detection
+
+Install the required packages:
+
 pip install -r requirements.txt
-4️⃣ Run the Project
+
+Run the project:
+
 python fraud_detection.py
 
-## 📦 Requirements
+The generated metrics, predictions, risk scores, and charts are stored in the outputs/ directory.
 
-The project uses the following Python libraries:
-pandas
-numpy
-matplotlib
-scikit-learn
-Install all dependencies using:
-pip install -r requirements.txt
+## Reproducibility
+The implementation uses fixed random states for the train/test split and Random Forest model.
 
-## 🧪 Sample Project Flow
+The execution flow is:
+Load Data
+   ↓
+Inspect Data
+   ↓
+Clean Data
+   ↓
+Analyze Transactions
+   ↓
+Prepare Features
+   ↓
+Encode Categories
+   ↓
+Split Data
+   ↓
+Train Models
+   ↓
+Evaluate Models
+   ↓
+Generate Probability
+   ↓
+Calculate Risk Score
+   ↓
+Assign Risk Category
+   ↓
+Save Results
 
-A transaction enters the system.
-Transaction Amount
-        +
-Transaction Type
-        +
-Location
-        +
-Device
-        │
-        ▼
-Data Processing
-        │
-        ▼
-Machine Learning Model
-        │
-        ▼
-Fraud Prediction
-        │
-        ▼
-Fraud Probability
-        │
-        ▼
-Risk Score
-        │
-        ▼
-Risk Level
-        │
-        ▼
-Further Verification / Investigation
+## Limitations
+The current dataset is relatively small and is intended for project-level analysis.
+The current test results are not representative of production performance.
+Fraud behavior can change over time.
+The current risk thresholds are manually defined.
+The implementation does not connect to a live banking transaction system.
+No real-time transaction processing or model monitoring is included.
 
-## 💡 Key Learning Outcomes
+## Further Development
+Possible extensions include:
 
-Through this project, the following concepts were implemented:
-Python-based data analysis
-Pandas data processing
-Data cleaning
-Exploratory Data Analysis
-Feature engineering
-Categorical data encoding
-Train/Test splitting
-Classification algorithms
-Logistic Regression
-Random Forest
-Model evaluation
-Confusion Matrix
-ROC-AUC
-Fraud probability estimation
-Risk scoring
-Risk classification
-Data visualization
-Git and GitHub project management
+Larger transaction datasets
+Customer transaction history
+Time-based behavioral features
+Real-time transaction scoring
+Hyperparameter tuning
+Cross-validation
+Probability calibration
+Threshold optimization
+Model explainability
+Model drift monitoring
+API deployment
+Database integration
+Real-time scoring service
 
-## ⚠️ Project Limitations
+## Responsible Use
+GitHub:
 
-This project is designed as a Machine Learning and risk analytics demonstration.
-Real-world banking fraud detection systems may require:
-Much larger transaction datasets
-Real-time transaction processing
-Advanced anomaly detection
-Streaming systems
-Customer behavioral profiling
-Device intelligence
-Network and graph analysis
-Continuous model monitoring
-Strong security and compliance controls
-Therefore, the results of this project should be interpreted as an analytical demonstration rather than a production banking fraud prevention system.
-
-## 🔮 Future Enhancements
-
-Possible future improvements include:
-🌐 Real-time fraud detection
-🤖 Advanced anomaly detection
-🧠 Deep Learning based fraud detection
-📊 Interactive dashboard using Streamlit
-⚡ Real-time transaction streaming
-🔐 Advanced authentication and security analysis
-📱 API-based fraud prediction
-☁️ Cloud deployment
-📈 Model monitoring and retraining
-🚨 Automated fraud alerts
-
-## 🏗️ End-to-End Architecture
+https://github.com/harshaharshu09/Banking_fraud_detection
 
 
-                    USER TRANSACTION
-                           │
-                           ▼
-                  TRANSACTION DATA
-                           │
-                           ▼
-                  DATA PREPROCESSING
-                           │
-                           ▼
-                  FEATURE ENGINEERING
-                           │
-                           ▼
-                   MACHINE LEARNING
-                           │
-                 ┌─────────┴─────────┐
-                 ▼                   ▼
-        LOGISTIC REGRESSION     RANDOM FOREST
-                 │                   │
-                 └─────────┬─────────┘
-                           ▼
-                    MODEL EVALUATION
-                           │
-                           ▼
-                  FRAUD PROBABILITY
-                           │
-                           ▼
-                      RISK SCORE
-                           │
-                           ▼
-                     RISK LEVEL
-                           │
-                           ▼
-                 BUSINESS INSIGHT
 
-
-## 📸 Project Visualizations
-
-The repository contains generated visualizations inside:
-outputs/plots/
-These plots provide visual insights into transaction behavior, fraud distribution, model performance, and risk analysis.
-
-## 🔐 Responsible Use
-
-This project is intended for educational, analytical, and demonstration purposes.
-Fraud predictions should be treated as risk indicators and should be combined with appropriate verification procedures, business rules, and human review before taking consequential actions.
-
-## 👨‍💻 Project
-
-Banking Fraud Detection & Risk Analytics
-Machine Learning | Data Analytics | Fraud Detection | Risk Analysis
